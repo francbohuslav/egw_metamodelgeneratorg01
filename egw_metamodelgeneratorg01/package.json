@@ -1,6 +1,6 @@
 {
   "name": "egw_metamodelgeneratorg01",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "",
   "license": "License Commercial",
   "spec": "nodejs-lib; uu_appg01@1.7.0",

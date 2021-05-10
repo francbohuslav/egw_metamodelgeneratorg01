@@ -62,7 +62,7 @@ const sections = [
 const usage = commandLineUsage(sections);
 const options = commandLineArgs(optionDefinitions);
 
-if (options.help || !options.profiles.length || !options.metamodel) {
+if (options.help || !options.profiles || !options.profiles.length || !options.metamodel) {
   console.log(usage);
   process.exit();
 }
