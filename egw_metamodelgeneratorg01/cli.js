@@ -12,9 +12,10 @@ const optionDefinitions = [
   {
     name: "profiles",
     alias: "p",
+    multiple: true,
     type: String,
     typeLabel: "{underline file}",
-    description: "Path to profiles.json"
+    description: "Path to profiles.json. Multiple files supported."
   },
   {
     name: "metamodel",
@@ -27,7 +28,8 @@ const optionDefinitions = [
     name: "mandatory-profiles",
     type: String,
     multiple: true,
-    typeLabel: "{underline Authorities profile name} {underline Executives profile name} {underline Auditors profile name}",
+    typeLabel:
+      "{underline Authorities profile name} {underline Executives profile name} {underline Auditors profile name}",
     description: "Path to metamodel to create/update.",
     defaultValue: ["Authorities", "Executives", "Auditors"]
   },
@@ -36,7 +38,7 @@ const optionDefinitions = [
     alias: "h",
     type: Boolean,
     description: "Displays this usage guide."
-  },
+  }
 ];
 const sections = [
   {
@@ -48,8 +50,8 @@ const sections = [
   {
     header: "Synopsis",
     content: [
-      "$ metamodel-generatorg01 -p profiles.json -m metamodel-1.0.json",
-      "$ metamodel-generatorg0 -h",
+      "$ metamodel-generatorg01 -p profiles1.json -p profiles2.json -m metamodel-1.0.json",
+      "$ metamodel-generatorg0 -h"
     ]
   },
   {
@@ -60,16 +62,15 @@ const sections = [
 const usage = commandLineUsage(sections);
 const options = commandLineArgs(optionDefinitions);
 
-if (options.help || !options.profiles || !options.metamodel) {
+if (options.help || !options.profiles.length || !options.metamodel) {
   console.log(usage);
   process.exit();
-};
-
-let dtoIn = {
-  profilesFile: path.resolve(procesCwd, options.profiles),
-  metamodel: path.resolve(procesCwd, options.metamodel),
-  mandatoryProfiles: options["mandatory-profiles"]
 }
 
+let dtoIn = {
+  profilesFiles: options.profiles.map(p => path.resolve(procesCwd, p)),
+  metamodel: path.resolve(procesCwd, options.metamodel),
+  mandatoryProfiles: options["mandatory-profiles"]
+};
 
 SupportMetamodelGeneratorAbl.createMetaModel(dtoIn);
