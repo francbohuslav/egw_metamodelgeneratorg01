@@ -1,6 +1,6 @@
 {
   "name": "egw_metamodelgeneratorg01",
-  "version": "0.2.0",
+  "version": "0.2.4",
   "description": "",
   "license": "License Commercial",
   "spec": "nodejs-lib; uu_appg01@1.7.0",
@@ -36,7 +36,7 @@
     "printWidth": 120
   },
   "bin": {
-    "metamodel-generatorg01": "./cli.js"
+    "egw-metamodel-generatorg01": "./cli.js"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
