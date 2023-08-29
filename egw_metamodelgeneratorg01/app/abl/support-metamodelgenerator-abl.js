@@ -107,7 +107,7 @@ class SupportMetamodelgeneratorAbl {
       this._fillHeader(res, existingMetamodel);
     }
 
-    let profileList = profiles["*"].profileList;
+    let profileList = profiles.reduce((s, p) => s.concat(p["*"].profileList.filter(item => s.indexOf(item) < 0)), []);
     profileList = profileList.filter(p => !IGNORED_PROFILES.includes(p));
     if (existingMetamodel) {
       if (!this._checkArrayEquals(profileList, existingMetamodel.roleGroupProfileList.map(p => p.code))) {
@@ -117,7 +117,7 @@ class SupportMetamodelgeneratorAbl {
         return;
       }
     }
-    let profilesUcMap = profiles["*"].useCaseMap;
+    let profilesUcMap = profiles.reduce((s, p) => ({ ...s, ...p["*"].useCaseMap }), {});
 
     if (mandatoryProfiles.some(i => !(profileList.indexOf(i) > -1))) {
       throw "Missing mandatory profile. You must have at least these 3 profiles in your profiles.json : Authorities, Executives, Auditors. If you have these profiles with different name, please use --mandatory-profiles attribute to map it.";
