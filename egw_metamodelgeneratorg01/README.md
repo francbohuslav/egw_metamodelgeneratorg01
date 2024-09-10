@@ -7,30 +7,30 @@ This tool generates and updates metamodel for uuBt. It has been tested only with
 
 # How to install and update ?
 
-`npm install --registry "https://repo.plus4u.net/repository/npm/" -g usy_support_metamodelgeneratorg01`
+`npm install --registry "https://repo.plus4u.net/repository/npm/" -g egw_metamodelgeneratorg01`
 
 # How to use ?
 
-Read help : `metamodel-generatorg01 --help`
+Read help : `egw-metamodel-generatorg01 --help`
 
 ## First generation
 1. Generates new metamodel from one or more profile.json \
-   `metamodel-generatorg01 -p library1/profiles.json -p library2/profiles.json -m metamodel-1.0.json`
+   `egw-metamodel-generatorg01 -p library1/profiles.json -p library2/profiles.json -m metamodel-1.0.json`
 2. Fill required information into generated metamodel.
    - code, name, desc   
    - defaultPermissionMatrix
 3. Update metamodel from one or more profile.json (to reflect filled code)\
-   `metamodel-generatorg01 -p library1/profiles.json -p library2/profiles.json -m metamodel-1.0.json`   
+   `egw-metamodel-generatorg01 -p library1/profiles.json -p library2/profiles.json -m metamodel-1.0.json`   
 4. Your metamodel is ready.
 
 ## Update command profiles
 1. Updates existing metamodel from one or more profile.json\
-   `metamodel-generatorg01 -p library1/profiles.json -p library2/profiles.json -m metamodel-1.0.json`
+   `egw-metamodel-generatorg01 -p library1/profiles.json -p library2/profiles.json -m metamodel-1.0.json`
 
 ## Add new profile in to profiles.json
 1. Add profile to metamodel (sections profileList and defaultPermissionMatrix)
 2. Updates existing metamodel from one or more profile.json \
-   `metamodel-generatorg01 -p library1/profiles.json -p library2/profiles.json -m metamodel-1.0.json`
+   `egw-metamodel-generatorg01 -p library1/profiles.json -p library2/profiles.json -m metamodel-1.0.json`
 
 
 # Changelog
